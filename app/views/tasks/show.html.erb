@@ -1,0 +1,42 @@
+<h1>スケジュール詳細</h1>
+<table class="table table-striped">
+  <tr>
+    <th><%= Task.human_attribute_name(:id) %></th>
+    <td><%= @task.id %></td>
+  </tr>
+  <tr>
+    <th><%= Task.human_attribute_name(:title) %></th>
+    <td><%= @task.title %></td>
+  </tr>
+  <tr>
+    <th><%= Task.human_attribute_name(:start) %></th>
+    <td><%= @task.start.strftime("%Y-%m-%d %H:%M") %></td>
+  </tr>
+  <tr>
+    <th><%= Task.human_attribute_name(:end) %></th>
+    <td><%= @task.end.strftime("%Y-%m-%d %H:%M") %></td>
+  </tr>
+  <tr>
+    <th><%= Task.human_attribute_name(:created_at) %></th>
+    <td><%= @task.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+  </tr>
+  <tr>
+    <th><%= Task.human_attribute_name(:updated_at) %></th>
+    <td><%= @task.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+  </tr>
+  <tr>
+    <th><%= Task.human_attribute_name(:allday) %></th>
+    <td>
+      <% if @task.allday %>
+      ◯
+      <% else %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th><%= Task.human_attribute_name(:memo) %></th>
+    <td><%= simple_format(h(@task.memo), {}, sanitize: false, wrapper_tag: "div") %></td>
+  </tr>
+</table>
+<%= link_to "戻る", tasks_path, class: "btn btn-secondary" %>
+<%= link_to "編集", edit_task_path, class: "btn btn-primary mr-3" %>
